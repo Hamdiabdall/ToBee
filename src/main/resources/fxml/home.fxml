@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.app.controllers.HomeController"
+      spacing="20" alignment="CENTER" style="-fx-padding: 20; -fx-background-color: #f5f5f5;">
+
+    <Text text="Bienvenue à l'application!" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+
+    <!-- Bouton de déconnexion -->
+    <Button fx:id="logoutButton" text="Déconnexion" onAction="#handleLogout" style="-fx-font-size: 14; -fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10;"/>
+</VBox>

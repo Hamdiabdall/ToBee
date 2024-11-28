@@ -1,0 +1,17 @@
+# IntelliJ IDEA project files
+.idea/
+*.iml
+
+# Maven build output
+target/
+
+# Java compiled files
+*.class
+
+# OS-generated files
+*.DS_Store
+*.log
+
+# IDE configuration files
+.vscode/
+.project

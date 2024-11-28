@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.RegisterController">
+    <Label text="Register" style="-fx-font-size: 18px;"/>
+
+    <!-- Formulaire -->
+    <TextField fx:id="nomField" promptText="Nom" maxWidth="300"/>
+    <TextField fx:id="prenomField" promptText="Prénom" maxWidth="300"/>
+    <TextField fx:id="emailField" promptText="Email" maxWidth="300"/>
+    <TextField fx:id="phoneField" promptText="Téléphone" maxWidth="300"/>
+    <PasswordField fx:id="passwordField" promptText="Mot de passe" maxWidth="300"/>
+    <PasswordField fx:id="confirmPasswordField" promptText="Confirmer le mot de passe" maxWidth="300"/>
+
+    <!-- Boutons -->
+    <Button fx:id="registerButton" text="S'inscrire" onAction="#handleRegister" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    <Button fx:id="backToLoginButton" text="Retour à la connexion" onAction="#handleBackToLogin" style="-fx-background-color: #d3d3d3;"/>
+</VBox>
