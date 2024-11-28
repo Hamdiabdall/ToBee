@@ -6,13 +6,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.regex.Pattern;
 
 public class LoginController {
     @FXML
@@ -39,7 +40,10 @@ public class LoginController {
             if (resultSet.next()) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
                 Stage stage = (Stage) loginButton.getScene().getWindow();
-                stage.setScene(new Scene(fxmlLoader.load()));
+                Scene scene = new Scene(fxmlLoader.load());
+                stage.setScene(scene);
+                stage.setWidth(800); // Définir la largeur de la fenêtre
+                stage.setHeight(600); // Définir la hauteur de la fenêtre
             } else {
                 showAlert("Erreur", "Identifiants incorrects.");
             }
@@ -53,7 +57,10 @@ public class LoginController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/register.fxml"));
             Stage stage = (Stage) registerButton.getScene().getWindow();
-            stage.setScene(new Scene(fxmlLoader.load()));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.setWidth(800); // Définir la largeur de la fenêtre
+            stage.setHeight(600); // Définir la hauteur de la fenêtre
         } catch (Exception e) {
             e.printStackTrace();
         }

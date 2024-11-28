@@ -13,6 +13,8 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Application CRUD");
+        stage.setMinWidth(800);
+        stage.setMinHeight(600);
         stage.show();
     }
 

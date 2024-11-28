@@ -6,7 +6,9 @@
 <VBox xmlns="http://javafx.com/javafx/17.0.2"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.app.controllers.HomeController"
-      spacing="20" alignment="CENTER" style="-fx-padding: 20; -fx-background-color: #f5f5f5;">
+      spacing="20" alignment="CENTER"
+      style="-fx-padding: 20; -fx-background-color: #f5f5f5;"
+      prefWidth="800" prefHeight="600">
 
     <Text text="Bienvenue à l'application!" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
 
