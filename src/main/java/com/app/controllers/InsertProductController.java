@@ -1,11 +1,15 @@
 package com.app.controllers;
 
 import com.app.db.DatabaseConnection;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.FileChooser;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 
-import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -20,18 +24,6 @@ public class InsertProductController {
     @FXML
     private ComboBox<String> categorieComboBox;
 
-    private String imagePath;
-
-    @FXML
-    private void uploadImage() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choisir une image");
-        File file = fileChooser.showOpenDialog(null);
-        if (file != null) {
-            imagePath = file.getAbsolutePath();
-        }
-    }
-
     @FXML
     private void handleInsertProduct() {
         String nom = nomField.getText();
@@ -39,19 +31,18 @@ public class InsertProductController {
         String prix = prixField.getText();
         String categorie = categorieComboBox.getValue();
 
-        if (nom.isEmpty() || marque.isEmpty() || prix.isEmpty() || categorie == null || imagePath == null) {
+        if (nom.isEmpty() || marque.isEmpty() || prix.isEmpty() || categorie == null) {
             showAlert("Erreur", "Tous les champs doivent être remplis !");
             return;
         }
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String query = "INSERT INTO produit (nom, marque, prix, categorie, image) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO produit (nom, marque, prix, categorie) VALUES (?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, nom);
             statement.setString(2, marque);
             statement.setDouble(3, Double.parseDouble(prix));
             statement.setString(4, categorie);
-            statement.setString(5, imagePath);
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
@@ -67,5 +58,24 @@ public class InsertProductController {
         alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void redirectToHome(ActionEvent actionEvent) {
+        try {
+            // Load the FXML file for the Home page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml")); // Update path as needed
+            VBox root = loader.load();
+
+            // Get the current stage
+            Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Set the new scene on the stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Impossible de charger la page d'accueil !");
+        }
     }
 }

@@ -36,17 +36,14 @@ public class HomeController {
 
     @FXML
     private void initialize() {
-        // Configuration des colonnes
         matriculeColumn.setCellValueFactory(cellData -> cellData.getValue().matriculeProperty().asObject());
         nomColumn.setCellValueFactory(cellData -> cellData.getValue().nomProperty());
         marqueColumn.setCellValueFactory(cellData -> cellData.getValue().marqueProperty());
         prixColumn.setCellValueFactory(cellData -> cellData.getValue().prixProperty().asObject());
         categorieColumn.setCellValueFactory(cellData -> cellData.getValue().categorieProperty());
 
-        // Charger les produits par défaut (catégorie "informatique")
         loadProducts("informatique");
 
-        // Listener pour les changements de catégorie
         categoryComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 loadProducts(newValue);

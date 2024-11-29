@@ -26,6 +26,7 @@
             </FXCollections>
         </items>
     </ComboBox>
-    <Button text="Télécharger une image" onAction="#uploadImage"/>
     <Button text="Ajouter" onAction="#handleInsertProduct"/>
+
+    <Button text="Home" onAction="#redirectToHome" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
 </VBox>
