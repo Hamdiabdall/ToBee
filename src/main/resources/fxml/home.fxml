@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <VBox xmlns="http://javafx.com/javafx/17.0.2"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.app.controllers.HomeController"
-      spacing="20" alignment="CENTER"
+      spacing="10" alignment="CENTER"
       style="-fx-padding: 20; -fx-background-color: #f5f5f5;"
       prefWidth="800" prefHeight="600">
 
-    <Text text="Bienvenue à l'application!" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+    <Text text="Produits" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
 
-    <!-- Bouton de déconnexion -->
-    <Button fx:id="logoutButton" text="Déconnexion" onAction="#handleLogout" style="-fx-font-size: 14; -fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10;"/>
+    <!-- Menu déroulant pour sélectionner les catégories -->
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Catégorie :"/>
+        <ComboBox fx:id="categoryComboBox" onAction="#handleCategoryChange">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="informatique"/>
+                    <String fx:value="mode&amp;beaute"/>
+                    <String fx:value="sport"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+
+    <!-- Tableau pour afficher les produits -->
+    <TableView fx:id="productTable" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="matriculeColumn" text="Matricule"/>
+            <TableColumn fx:id="nomColumn" text="Nom"/>
+            <TableColumn fx:id="marqueColumn" text="Marque"/>
+            <TableColumn fx:id="prixColumn" text="Prix"/>
+            <TableColumn fx:id="categorieColumn" text="Catégorie"/>
+        </columns>
+    </TableView>
+
+    <!-- Bouton pour ajouter un produit -->
+    <Button text="Ajouter" onAction="#redirectToInsertProduct" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
 </VBox>

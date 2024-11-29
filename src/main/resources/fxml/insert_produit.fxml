@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.text.Text?>
+<?import java.lang.String?>
+<VBox xmlns="http://javafx.com/javafx/17.0.2"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.app.controllers.InsertProductController"
+      spacing="10" alignment="CENTER"
+      style="-fx-padding: 20; -fx-background-color: #f5f5f5;"
+      prefWidth="800" prefHeight="600">
+
+    <Text text="Ajouter un produit" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+
+    <TextField fx:id="nomField" promptText="Nom"/>
+    <TextField fx:id="marqueField" promptText="Marque"/>
+    <TextField fx:id="prixField" promptText="Prix"/>
+    <ComboBox fx:id="categorieComboBox">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="informatique"/>
+                <String fx:value="mode&amp;beaute"/>
+                <String fx:value="sport"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+    <Button text="Télécharger une image" onAction="#uploadImage"/>
+    <Button text="Ajouter" onAction="#handleInsertProduct"/>
+</VBox>
