@@ -1,23 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.collections.FXCollections?>
-<?import javafx.scene.text.Text?>
 <?import java.lang.String?>
+<?import javafx.scene.text.Text?>
 <VBox xmlns="http://javafx.com/javafx/17.0.2"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.app.controllers.InsertProductController"
-      spacing="10" alignment="CENTER"
-      style="-fx-padding: 20; -fx-background-color: #f5f5f5;"
-      prefWidth="800" prefHeight="600">
+      spacing="20" alignment="CENTER"
+      stylesheets="../css/styles.css"
+      prefWidth="800" prefHeight="600"
+      styleClass="insert-product-root">
 
-    <Text text="Ajouter un produit" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+    <Text text="Ajouter un produit" styleClass="text-title"/>
 
-    <TextField fx:id="nomField" promptText="Nom"/>
-    <TextField fx:id="marqueField" promptText="Marque"/>
-    <TextField fx:id="prixField" promptText="Prix"/>
-    <ComboBox fx:id="categorieComboBox">
+    <TextField fx:id="nomField" promptText="Nom" styleClass="text-field"/>
+    <TextField fx:id="marqueField" promptText="Marque" styleClass="text-field"/>
+    <TextField fx:id="prixField" promptText="Prix" styleClass="text-field"/>
+    <ComboBox fx:id="categorieComboBox" styleClass="combo-box">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="informatique"/>
@@ -26,7 +28,9 @@
             </FXCollections>
         </items>
     </ComboBox>
-    <Button text="Ajouter" onAction="#handleInsertProduct"/>
 
-    <Button text="Home" onAction="#redirectToHome" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    <HBox spacing="10" alignment="CENTER" styleClass="insert-product-buttons">
+        <Button text="Ajouter" onAction="#handleInsertProduct" styleClass="primary-button"/>
+        <Button text="Home" onAction="#redirectToHome" styleClass="primary-button"/>
+    </HBox>
 </VBox>

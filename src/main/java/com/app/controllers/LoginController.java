@@ -54,17 +54,25 @@ public class LoginController {
 
     @FXML
     private void handleRegisterRedirect() {
+        redirectToScene(registerButton, "/fxml/register.fxml", "Inscription");
+    }
+
+    private void redirectToScene(Button sourceButton, String fxmlPath, String title) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/register.fxml"));
-            Stage stage = (Stage) registerButton.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Stage stage = (Stage) sourceButton.getScene().getWindow();
             Scene scene = new Scene(fxmlLoader.load());
             stage.setScene(scene);
-            stage.setWidth(800); // Définir la largeur de la fenêtre
-            stage.setHeight(600); // Définir la hauteur de la fenêtre
+            stage.setWidth(800);
+            stage.setHeight(600);
+            stage.setTitle(title);
         } catch (Exception e) {
             e.printStackTrace();
+            showAlert("Erreur", "Impossible de charger la scène.");
         }
     }
+
+
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

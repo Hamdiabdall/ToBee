@@ -42,7 +42,7 @@ public class RegisterController {
 
     @FXML
     private void handleRegister() {
-        // Récupérer les valeurs des champs
+        // Retrieve input values
         String nom = nomField.getText().trim();
         String prenom = prenomField.getText().trim();
         String email = emailField.getText().trim();
@@ -50,27 +50,11 @@ public class RegisterController {
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
-        // Valider les champs
-        if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Tous les champs doivent être remplis !");
-            return;
-        }
-
-        // Vérification de l'email avec une expression régulière
-        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        if (!pattern.matcher(email).matches()) {
-            showAlert(Alert.AlertType.ERROR, "Erreur", "L'adresse e-mail n'est pas valide !");
-            return;
-        }
-
-        if (!password.equals(confirmPassword)) {
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Les mots de passe ne correspondent pas !");
-            return;
-        }
+        // Validate fields
+        if (!validateFields(nom, prenom, email, phone, password, confirmPassword)) return;
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            // Insérer l'utilisateur dans la base de données
+            // Insert user into the database
             String query = "INSERT INTO user (nom, prenom, email, phone, password) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, nom);
@@ -94,16 +78,44 @@ public class RegisterController {
 
     @FXML
     private void handleBackToLogin() {
-        redirectToLogin();
+        redirectToScene(backToLoginButton, "/fxml/login.fxml", "Connexion");
+    }
+
+    private boolean validateFields(String nom, String prenom, String email, String phone, String password, String confirmPassword) {
+        if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Tous les champs doivent être remplis !");
+            return false;
+        }
+
+        // Validate email with a regex
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        if (!Pattern.compile(emailRegex).matcher(email).matches()) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "L'adresse e-mail n'est pas valide !");
+            return false;
+        }
+
+        if (!password.equals(confirmPassword)) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Les mots de passe ne correspondent pas !");
+            return false;
+        }
+
+        return true;
     }
 
     private void redirectToLogin() {
+        redirectToScene(registerButton, "/fxml/login.fxml", "Connexion");
+    }
+
+    private void redirectToScene(Button sourceButton, String fxmlPath, String title) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
-            Stage stage = (Stage) backToLoginButton.getScene().getWindow();
-            stage.setScene(new Scene(fxmlLoader.load()));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Stage stage = (Stage) sourceButton.getScene().getWindow();
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.setTitle(title);
         } catch (Exception e) {
             e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger la scène.");
         }
     }
 

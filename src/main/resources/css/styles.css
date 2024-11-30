@@ -1,0 +1,68 @@
+/* General styles */
+body {
+    -fx-background-color: #F3EBF6;
+    -fx-font-family: 'Ubuntu', sans-serif;
+}
+
+.text-title {
+    -fx-font-size: 23px;
+    -fx-font-weight: bold;
+    -fx-fill: #8C55AA;
+}
+
+.text-field, .combo-box {
+    -fx-background-color: rgba(136, 126, 126, 0.04);
+    -fx-border-radius: 20px;
+    -fx-border-color: rgba(0, 0, 0, 0.02);
+    -fx-text-fill: rgb(38, 50, 56);
+    -fx-font-weight: 700;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+}
+
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: rgba(0, 0, 0, 0.18);
+}
+
+.primary-button {
+    -fx-background-color: linear-gradient(to right, #9C27B0, #E040FB);
+    -fx-text-fill: white;
+    -fx-border-radius: 5em;
+    -fx-padding: 10px 40px;
+    -fx-font-size: 13px;
+    -fx-font-family: 'Ubuntu', sans-serif;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.04), 10, 0, 0, 0);
+}
+
+.secondary-button {
+    -fx-background-color: #E1BEE7;
+    -fx-text-fill: #8C55AA;
+    -fx-border-radius: 5em;
+    -fx-padding: 10px 40px;
+    -fx-font-size: 13px;
+    -fx-font-family: 'Ubuntu', sans-serif;
+    -fx-cursor: hand;
+}
+
+.insert-product-root, .update-product-root {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 1.5em;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.14), 35, 0, 0, 0);
+    -fx-padding: 20px;
+    -fx-alignment: center;
+    -fx-max-width: 500px;
+    -fx-margin: 20px auto;
+}
+
+.update-product-grid {
+    -fx-alignment: center;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.insert-product-buttons, .update-product-buttons {
+    -fx-spacing: 10;
+    -fx-alignment: center;
+    -fx-margin: 20px 0 0 0;
+}

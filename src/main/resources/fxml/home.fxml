@@ -1,24 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
+<?import javafx.scene.layout.VBox?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
-
-
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
 <VBox xmlns="http://javafx.com/javafx/17.0.2"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.app.controllers.HomeController"
       spacing="10" alignment="CENTER"
-      style="-fx-padding: 20; -fx-background-color: #f5f5f5;"
+      stylesheets="@../css/styles.css"
       prefWidth="800" prefHeight="600">
 
-    <Text text="Produits" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+    <Text text="Produits" styleClass="text-title"/>
 
     <HBox spacing="10" alignment="CENTER">
-        <Label text="Catégorie :"/>
-        <ComboBox fx:id="categoryComboBox" onAction="#handleCategoryChange">
+        <Label text="Catégorie :" styleClass="text-title"/>
+        <ComboBox fx:id="categoryComboBox" onAction="#handleCategoryChange" styleClass="combo-box">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="informatique"/>
@@ -29,7 +30,7 @@
         </ComboBox>
     </HBox>
 
-    <TableView fx:id="productTable" prefHeight="400">
+    <TableView fx:id="productTable" prefHeight="400" styleClass="table-view">
         <columns>
             <TableColumn fx:id="matriculeColumn" text="Matricule"/>
             <TableColumn fx:id="nomColumn" text="Nom"/>
@@ -40,9 +41,8 @@
     </TableView>
 
     <HBox spacing="10" alignment="CENTER">
-        <Button text="Ajouter" onAction="#redirectToInsertProduct" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
-        <Button text="Supprimer" onAction="#handleDeleteProduct" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
-        <Button text="Modifier" onAction="#handleUpdateProduct" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Button text="Ajouter" onAction="#redirectToInsertProduct" styleClass="primary-button"/>
+        <Button text="Supprimer" onAction="#handleDeleteProduct" styleClass="secondary-button"/>
+        <Button text="Modifier" onAction="#handleUpdateProduct" styleClass="primary-button"/>
     </HBox>
 </VBox>
-

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -8,28 +7,28 @@
       fx:controller="com.app.controllers.UpdateProductController"
       spacing="15"
       alignment="CENTER"
-      style="-fx-padding: 20; -fx-background-color: #f5f5f5;"
-      prefWidth="400" prefHeight="400">
+      stylesheets="../css/styles.css"
+      prefWidth="500" prefHeight="600"
+      styleClass="update-product-root">
 
-    <Label text="Modifier un produit" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+    <Label text="Modifier un produit" styleClass="text-title"/>
 
-    <GridPane hgap="10" vgap="10">
-        <Label text="Nom:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <TextField fx:id="nomField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <GridPane hgap="10" vgap="10" styleClass="update-product-grid">
+        <Label text="Nom:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="text-title"/>
+        <TextField fx:id="nomField" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="text-field"/>
 
-        <Label text="Marque:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-        <TextField fx:id="marqueField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label text="Marque:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="text-title"/>
+        <TextField fx:id="marqueField" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="text-field"/>
 
-        <Label text="Prix:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-        <TextField fx:id="prixField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <Label text="Prix:" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="text-title"/>
+        <TextField fx:id="prixField" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="text-field"/>
 
-        <Label text="Catégorie:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-        <TextField fx:id="categorieField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <Label text="Catégorie:" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="text-title"/>
+        <TextField fx:id="categorieField" GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="text-field"/>
     </GridPane>
 
-    <HBox spacing="10" alignment="CENTER">
-        <Button text="Save" onAction="#handleSave" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
-        <Button text="Cancel" onAction="#handleCancel" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+    <HBox spacing="10" alignment="CENTER" styleClass="update-product-buttons">
+        <Button text="Save" onAction="#handleSave" styleClass="primary-button"/>
+        <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-button"/>
     </HBox>
-
 </VBox>

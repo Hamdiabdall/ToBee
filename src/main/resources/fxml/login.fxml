@@ -1,12 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.app.controllers.LoginController"
+           prefWidth="400" prefHeight="500"
+           stylesheets="@../css/styles.css" styleClass="login-root">
 
-<VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.LoginController"
-      prefWidth="800" prefHeight="600">
-    <Label text="Login" style="-fx-font-size: 18px;"/>
-    <TextField fx:id="usernameField" promptText="Email"/>
-    <PasswordField fx:id="passwordField" promptText="Password"/>
-    <Button fx:id="loginButton" text="Login" onAction="#handleLogin"/>
-    <Button fx:id="registerButton" text="Register" onAction="#handleRegisterRedirect"/>
-</VBox>
+    <VBox alignment="CENTER" spacing="10" styleClass="login-container">
+        <Label text="Login" styleClass="form-title"/>
+        <TextField fx:id="usernameField" promptText="Email" styleClass="form-input"/>
+        <PasswordField fx:id="passwordField" promptText="Password" styleClass="form-input"/>
+
+        <HBox alignment="CENTER" spacing="10">
+            <Button fx:id="loginButton" text="Login" onAction="#handleLogin" styleClass="primary-button"/>
+            <Button fx:id="registerButton" text="Register" onAction="#handleRegisterRedirect" styleClass="secondary-button"/>
+        </HBox>
+    </VBox>
+</StackPane>
