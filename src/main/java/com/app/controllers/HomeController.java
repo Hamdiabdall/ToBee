@@ -100,4 +100,62 @@ public class HomeController {
             productList.clear();
         }
     }
+
+    @FXML
+    private void handleDeleteProduct() {
+        Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
+        if (selectedProduct != null) {
+            try (Connection conn = DatabaseConnection.getConnection()) {
+                String query = "DELETE FROM produit WHERE matricule = ?";
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, selectedProduct.getMatricule());
+
+                int rowsDeleted = statement.executeUpdate();
+                if (rowsDeleted > 0) {
+                    productList.remove(selectedProduct);
+                    showAlert("Succès", "Produit supprimé avec succès !");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                showAlert("Erreur", "Une erreur s'est produite lors de la suppression !");
+            }
+        } else {
+            showAlert("Alerte", "Veuillez sélectionner un produit à supprimer !");
+        }
+    }
+
+
+
+
+    @FXML
+    private void handleUpdateProduct() {
+        Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
+        if (selectedProduct != null) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/update_product.fxml"));
+                Stage stage = (Stage) productTable.getScene().getWindow();
+                stage.setScene(new Scene(fxmlLoader.load()));
+
+                // Pass the selected product to the UpdateProductController
+                UpdateProductController controller = fxmlLoader.getController();
+                controller.setProduct(selectedProduct);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                showAlert("Erreur", "Impossible d'ouvrir la page de mise à jour !");
+            }
+        } else {
+            showAlert("Alerte", "Veuillez sélectionner un produit à modifier !");
+        }
+    }
+
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 }

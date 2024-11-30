@@ -5,6 +5,8 @@
 
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+
+
 <VBox xmlns="http://javafx.com/javafx/17.0.2"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.app.controllers.HomeController"
@@ -14,7 +16,6 @@
 
     <Text text="Produits" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
 
-    <!-- Menu déroulant pour sélectionner les catégories -->
     <HBox spacing="10" alignment="CENTER">
         <Label text="Catégorie :"/>
         <ComboBox fx:id="categoryComboBox" onAction="#handleCategoryChange">
@@ -28,7 +29,6 @@
         </ComboBox>
     </HBox>
 
-    <!-- Tableau pour afficher les produits -->
     <TableView fx:id="productTable" prefHeight="400">
         <columns>
             <TableColumn fx:id="matriculeColumn" text="Matricule"/>
@@ -39,6 +39,10 @@
         </columns>
     </TableView>
 
-    <!-- Bouton pour ajouter un produit -->
-    <Button text="Ajouter" onAction="#redirectToInsertProduct" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Ajouter" onAction="#redirectToInsertProduct" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="Supprimer" onAction="#handleDeleteProduct" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+        <Button text="Modifier" onAction="#handleUpdateProduct" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+    </HBox>
 </VBox>
+
