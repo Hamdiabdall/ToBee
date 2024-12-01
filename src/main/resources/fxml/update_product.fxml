@@ -7,7 +7,7 @@
       fx:controller="com.app.controllers.UpdateProductController"
       spacing="15"
       alignment="CENTER"
-      stylesheets="../css/styles.css"
+      stylesheets="@../css/styles.css"
       prefWidth="500" prefHeight="600"
       styleClass="update-product-root">
 

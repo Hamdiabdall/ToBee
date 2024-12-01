@@ -10,7 +10,7 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.app.controllers.InsertProductController"
       spacing="20" alignment="CENTER"
-      stylesheets="../css/styles.css"
+      stylesheets="@../css/styles.css"
       prefWidth="800" prefHeight="600"
       styleClass="insert-product-root">
 

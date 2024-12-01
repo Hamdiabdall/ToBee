@@ -1,16 +1,26 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
 <StackPane xmlns:fx="http://javafx.com/fxml"
            fx:controller="com.app.controllers.LoginController"
            prefWidth="400" prefHeight="500"
            stylesheets="@../css/styles.css" styleClass="login-root">
 
-    <VBox alignment="CENTER" spacing="10" styleClass="login-container">
+    <VBox alignment="CENTER" spacing="15" styleClass="login-container">
+        <!-- Add Logo -->
+        <ImageView fx:id="logoImageView" fitWidth="100" fitHeight="100">
+            <image>
+                <Image url="@../images/login-icon.jpg" />
+            </image>
+        </ImageView>
+
         <Label text="Login" styleClass="form-title"/>
         <TextField fx:id="usernameField" promptText="Email" styleClass="form-input"/>
         <PasswordField fx:id="passwordField" promptText="Password" styleClass="form-input"/>

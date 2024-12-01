@@ -42,14 +42,20 @@ public class HomeController {
         prixColumn.setCellValueFactory(cellData -> cellData.getValue().prixProperty().asObject());
         categorieColumn.setCellValueFactory(cellData -> cellData.getValue().categorieProperty());
 
+        // Set default value for ComboBox
+        categoryComboBox.setValue("informatique");
+
+        // Load products for the default category
         loadProducts("informatique");
 
+        // Add a listener for category changes
         categoryComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 loadProducts(newValue);
             }
         });
     }
+
 
     private void loadProducts(String category) {
         productList.clear();
@@ -157,5 +163,21 @@ public class HomeController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    @FXML
+    private void handleLogOut(ActionEvent event) {
+        try {
+            // Load the login.fxml file
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+            Stage stage = (Stage) productTable.getScene().getWindow(); // Get the current stage
+            stage.setScene(new Scene(fxmlLoader.load()));
+            stage.show(); // Show the new scene
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Une erreur s'est produite lors de la déconnexion !");
+        }
+    }
+
 
 }
+
+
